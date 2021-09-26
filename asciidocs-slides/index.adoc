@@ -1,33 +1,94 @@
-= Demo-Presentation1
-Thomas W. Stütz
-1.0, 2020-08-22
+= Rocketman
+Kaufmann Jan, Plakolb Marcel, Hain Lukas
+1.0, 2021-09-20
 ifndef::sourcedir[:sourcedir: ../src/main/java]
 ifndef::imagesdir[:imagesdir: images]
 ifndef::backend[:backend: html5]
 :icons: font
 
-== First Slide
+== Was war?
 
-* aaa
-* bbb
-* ccc [red]#red text#
+=== Ausganssituation
 
-=== Second Slide
+* Teilnahme beim Wettbewerb "CanSat"
+* Ziel des Wettbewerbs:
+** Satellit mit einer Rakete ca. 500m in die Luft Schießen
+** davon verschiedene Daten sammeln (Temperatur, Luftdruck, ...)
 
-[plantuml,cld,png]
+=== Ist-Zustand
+
+* keine einheitliche, einfach handhabbare Methode zum Senden und Empfangen von Daten
+* Geräte zur Datenübertragung und zum Abschuss von Raketen sind getrennt
+
+=== Ziel
+
+* Teilnahme bei CanSat für zukünftige Schüler zu vereinfachen
+
+=== Aufgabenstellung
+
+* Backend
+* Aktuatorsteuerung
+
+=== Ergebnis
+
+* Der Koffer mit dem ma hoid des steuern konn und so
+
+ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=100%]]
+
+== Was ist?
+
+=== 1. image:system_architecture.png[width=50%]
+
+* Dataset wird als JSON Objekt mittels MQTT übertragen
+
+[source,json]
 ----
-@startuml
-class Person {
-brand: String
-type: String
+{
+    "description": "temperature",
+    "value": "200",
+    "unit": "celsius",
+    "timestamp": "2021-01-11T13:11:09.5Z4"
 }
-@enduml
 ----
 
-== Third Slide
+=== 2. image:system_architecture.png[width=50%]
 
-image:https://images.pexels.com/photos/3966425/pexels-photo-3966425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940[VW]
+* Die Position des Joy-Sticks und der Wert des Schalters werden als JSON Objekt mittels MQTT übertragen
 
-== Fourth Slide
+[source,json]
+----
+{
+    "x-axis": 520,
+    "y-axis": 512,
+    "switch_value": 999
+}
+----
 
-IMPORTANT: Something very important
+=== 4. image:system_architecture.png[width=50%]
+
+* Es werden mehrere JSON-Arrays übertragen um im Frontend die Graphen darstellen zu können.
+
+=== 5. Konfigurationen
+
+* Die Konfigurationen, die im Frontend erstellt werden, werden als JSON Objekt mittels HTTP übertragen
+
+[source,json]
+----
+{
+    "name": "Default Configuration",
+    "countdown": 120,
+    "igniter": 4,
+    "resistance": 1.4,
+    "useJoyStick": false,
+    "useVideo": false
+}
+----
+
+== Was wird sein?
+
+* xbee video streaming
+* Daten werden über lora übertragen
+* Zündung
+* Hardware design
+
+=== image:case_concept.png[width=60%]
