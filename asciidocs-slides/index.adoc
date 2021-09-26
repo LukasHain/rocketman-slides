@@ -31,13 +31,13 @@ ifndef::backend[:backend: html5]
 
 === Ergebnis
 
-* Der Koffer mit dem ma hoid des steuern konn und so
+* Koffer mit dem man verschiedene Aktuatoren steuern und Sensordaten visualisieren kann
 
 ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=100%]]
 
 == Was ist?
 
-=== 1. image:system_architecture.png[width=50%]
+=== 1. image:system_architecture_1.png[width=50%]
 
 * Dataset wird als JSON Objekt mittels MQTT übertragen
 
@@ -51,7 +51,7 @@ ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=100%]]
 }
 ----
 
-=== 2. image:system_architecture.png[width=50%]
+=== 2. image:system_architecture_2.png[width=50%]
 
 * Die Position des Joy-Sticks und der Wert des Schalters werden als JSON Objekt mittels MQTT übertragen
 
@@ -64,7 +64,7 @@ ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=100%]]
 }
 ----
 
-=== 4. image:system_architecture.png[width=50%]
+=== 4. image:system_architecture_4.png[width=50%]
 
 * Es werden mehrere JSON-Arrays übertragen um im Frontend die Graphen darstellen zu können.
 
