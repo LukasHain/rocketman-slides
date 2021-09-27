@@ -15,20 +15,25 @@ ifndef::backend[:backend: html5]
 |5AHITM
 
 |Hain Lukas, Kaufmann Jan, Plakolb Marcel
-|bla bla
+|Dumfarth Felix, Feichtinger Sarah
 
 a|
-* backend
-* Aktuatorsteuerung
-|Column 2, row 3
+* Backend
+* Kamerasteuerung
 
-|
-|
+a|
+* Frontend
+* Hardwareentwurf
 
 |===
+
 [%notitle]
-== Background
-image::system_architecture.png[background, size=cover, opacity=0.5]
+=== Launch
+image::launch_example.png[background, size=cover]
+
+[%notitle]
+=== Case
+image::case_concept.png[background, size=cover]
 
 == Was war?
 
@@ -46,7 +51,10 @@ image::system_architecture.png[background, size=cover, opacity=0.5]
 
 === Ziel
 
-* Teilnahme bei CanSat für zukünftige Schüler zu vereinfachen
+* Das Speichern und Zugreifen der Sensordaten für das Frontend ermöglichen
+* Erstellen von Config-files über das Frontend ermöglichen
+* Position von Schüsselschalter und Joystick erfassen
+* xbee Videostreaming und lora Datenübertragung
 
 === Aufgabenstellung
 
@@ -55,12 +63,16 @@ image::system_architecture.png[background, size=cover, opacity=0.5]
 
 === Ergebnis
 
-* Koffer mit dem man verschiedene Aktuatoren steuern und Sensordaten visualisieren kann
+* Quarkus Backend mit Anbindung an SQLite-Datenbank
+* Python Programm zum Erfassen von Schlüsselschalter- und Joystickposition
 
 ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=80%]]
 
 == Was ist?
 
+[%notitle]
+=== System architecture
+image::system_architecture.png[background, size=contain]
 
 === image:system_architecture_1.png[width=50%]
 
@@ -114,6 +126,4 @@ ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=80%]]
 * xbee video streaming
 * Daten werden über lora übertragen
 * Zündung
-* Hardware design
-
-=== image:case_concept.png[width=60%]
+* Hardwareentwurf
