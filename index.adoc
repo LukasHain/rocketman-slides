@@ -1,0 +1,129 @@
+= Rocketman
+Kaufmann Jan, Plakolb Marcel, Hain Lukas
+1.0, 2021-09-20
+ifndef::sourcedir[:sourcedir: ../src/main/java]
+ifndef::imagesdir[:imagesdir: images]
+ifndef::backend[:backend: html5]
+:icons: font
+
+== Überblick
+
+|===
+|Gruppe 1 |Gruppe 2
+
+|5AHIF
+|5AHITM
+
+|Hain Lukas, Kaufmann Jan, Plakolb Marcel
+|Dumfarth Felix, Feichtinger Sarah
+
+a|
+* Backend
+* Kamerasteuerung
+
+a|
+* Frontend
+* Hardwareentwurf
+
+|===
+
+[%notitle]
+=== Launch
+image::launch_example.png[background, size=cover]
+
+[%notitle]
+=== Case
+image::case_concept.png[background, size=cover]
+
+== Was war?
+
+=== Ausganssituation
+
+* Teilnahme beim Wettbewerb "CanSat"
+* Ziel des Wettbewerbs:
+** Satellit mit einer Rakete ca. 500m in die Luft Schießen
+** davon verschiedene Daten sammeln (Temperatur, Luftdruck, ...)
+
+=== Ist-Zustand
+
+* keine einheitliche, einfach handhabbare Methode zum Senden und Empfangen von Daten
+* Geräte zur Datenübertragung und zum Abschuss von Raketen sind getrennt
+
+=== Ziel
+
+* Das Speichern und Zugreifen der Sensordaten für das Frontend ermöglichen
+* Erstellen von Config-files über das Frontend ermöglichen
+* Position von Schüsselschalter und Joystick erfassen
+* xbee Videostreaming und lora Datenübertragung
+
+=== Aufgabenstellung
+
+* Backend
+* Aktuatorsteuerung
+
+=== Ergebnis
+
+* Quarkus Backend mit Anbindung an SQLite-Datenbank
+* Python Programm zum Erfassen von Schlüsselschalter- und Joystickposition
+
+ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=80%]]
+
+== Was ist?
+
+[%notitle]
+=== System architecture
+image::system_architecture.png[background, size=contain]
+
+=== image:system_architecture_1.png[width=50%]
+
+* Dataset wird als JSON Objekt mittels MQTT übertragen
+
+[source,json]
+----
+{
+    "description": "temperature",
+    "value": "200",
+    "unit": "celsius",
+    "timestamp": "2021-01-11T13:11:09.5Z4"
+}
+----
+
+=== image:system_architecture_2.png[width=50%]
+
+* Die Position des Joy-Sticks und der Wert des Schalters werden als JSON Objekt mittels MQTT übertragen
+
+[source,json]
+----
+{
+    "x-axis": 520,
+    "y-axis": 512,
+    "switch_value": 999
+}
+----
+
+=== image:system_architecture_4.png[width=50%]
+
+* Es werden mehrere JSON-Arrays übertragen um im Frontend die Graphen darstellen zu können.
+
+=== image:system_architecture_5.png[width=50%]
+
+* Die Konfigurationen, die im Frontend erstellt werden, werden als JSON Objekt mittels HTTP übertragen
+
+[source,json]
+----
+{
+    "name": "Default Configuration",
+    "countdown": 120,
+    "igniter": 4,
+    "resistance": 1.4,
+    "useJoyStick": false,
+    "useVideo": false
+}
+----
+
+== Was wird sein?
+
+* xbee video streaming
+* Daten werden über lora übertragen
+* Zündung
+* Hardwareentwurf
