@@ -6,6 +6,30 @@ ifndef::imagesdir[:imagesdir: images]
 ifndef::backend[:backend: html5]
 :icons: font
 
+== Überblick
+
+|===
+|Gruppe 1 |Gruppe 2
+
+|5AHIF
+|5AHITM
+
+|Hain Lukas, Kaufmann Jan, Plakolb Marcel
+|bla bla
+
+a|
+* backend
+* Aktuatorsteuerung
+|Column 2, row 3
+
+|
+|
+
+|===
+[%notitle]
+== Background
+image::system_architecture.png[background, size=cover, opacity=0.5]
+
 == Was war?
 
 === Ausganssituation
@@ -36,6 +60,7 @@ ifndef::backend[:backend: html5]
 ifdef::backend-html5,backend-revealjs[image:system_architecture.png[width=80%]]
 
 == Was ist?
+
 
 === image:system_architecture_1.png[width=50%]
 
